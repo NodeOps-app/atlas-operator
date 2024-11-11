@@ -1,0 +1,51 @@
+x-oprator: &oprator
+  image: nodeops/atlas-operator:testnet-eigenlayer
+  entrypoint: [othentic-cli]
+  restart: unless-stopped
+  env_file:
+    - .env
+  cap_drop:
+    - NET_ADMIN
+    - SYS_ADMIN
+  labels:
+    - com.centurylinklabs.watchtower.enable=true
+    - com.centurylinklabs.watchtower.scope=atlaseigenlayertestnet
+
+services:
+  atlas-avs-eigenlayer-verifier:
+    <<: *oprator
+    container_name: atlas-avs-eigenlayer-testnet-verifier
+    command:
+      - node
+      - attester
+      - /dns/testnet-connect.atlasnetwork.xyz/tcp/9876/p2p/${OTHENTIC_BOOTSTRAP_ID}
+      - --avs-webapi
+      - http://atlas-avs-eigenlayer-testnet-operator
+
+  atlas-avs-eigenlayer-operator:
+    <<: *oprator
+    container_name: atlas-avs-eigenlayer-testnet-operator
+
+  register:
+    <<: *oprator
+    entrypoint:
+      - othentic-cli
+      - operator
+      - register
+    profiles:
+      - register
+
+  watchtower:
+    image: containrrr/watchtower:1.7.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      WATCHTOWER_POLL_INTERVAL: 10800
+      WATCHTOWER_LABEL_ENABLE: true
+      ## Can enable notifications as well for the updates for more https://containrrr.dev/shoutrrr/v0.8/services/overview/#services_overview
+      # WATCHTOWER_NOTIFICATION_URL: "discord://token@channel slack://watchtower@token-a/token-b/token-c"
+      # WATCHTOWER_NOTIFICATION_TEMPLATE: "{{range .}}{{.Time.Format \"2006-01-02 15:04:05\"}} ({{.Level}}): {{.Message}}{{println}}{{end}}"
+    labels:
+      - com.centurylinklabs.watchtower.scope=atlaseigenlayertestnet
+    profiles:
+      - autopilot
