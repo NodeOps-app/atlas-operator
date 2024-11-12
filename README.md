@@ -2,7 +2,7 @@
 
 ## Operator Setup Guide
 
-**Before you start following the instructions presented here, make sure that you are whitelisted as an operator.** Whitelisting is done through an on-boarding form.
+**Before you start following the instructions, make sure that you are whitelisted as an operator.** You can get whitelisted by completing the onboarding form -  https://docs.google.com/forms/d/e/1FAIpQLScRF42pHSY0csdl_Dto5e7fhqERfkXNowiL5modetpM8DW0fA/viewform. 
 
 If you are a whitelisted operator and have any questions about the setup process, please reach out to the support team on telegram or discord.
 
