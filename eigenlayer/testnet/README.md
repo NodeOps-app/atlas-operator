@@ -44,7 +44,7 @@
 
 ## Setup Instructions
 
-- Use othentic cli to register your operator on Atlas Network EigenLayer AVS Testnet. If you're not operator on eigenlayer then it'll prompt you for the details. You can use private key as signer key as well. Add `0x590dDF9A1a475bF46F10627A49051036d5286a61` for Governance address
+- Use othentic cli to register your operator on Atlas Network EigenLayer AVS Testnet. If you're not operator on eigenlayer then it'll prompt you for the details. You can use private key as signer key as well [follow this for more](https://docs.othentic.xyz/main/avs-framework/othentic-cli/private-key-management). Add `0x590dDF9A1a475bF46F10627A49051036d5286a61` for Governance address
 
   ```shell
   ## AVS Governance address: 0x590dDF9A1a475bF46F10627A49051036d5286a61

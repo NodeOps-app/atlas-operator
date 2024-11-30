@@ -27,7 +27,7 @@ services:
     image: containrrr/watchtower:1.7.1
     container_name: atlas-avs-eigenlayer-testnet-autopilot
     volumes:
-      - /var/run/docker.sock:/var/run/doker.sock
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       WATCHTOWER_POLL_INTERVAL: 3600
       WATCHTOWER_LABEL_ENABLE: true
